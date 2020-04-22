@@ -8,13 +8,13 @@ class Show < ActiveRecord::Base
     Show.where("rating = ?", self.highest_rating).first
   end
 
-  def self.lowest_rating #returns the lowest value in the ratings column
-    Show.minimun(:rating)
-  end
+  def self.lowest_rating
+    Show.minimum(:rating)
+  end 
 
-  def self.least_popular_show #returns the show with the lowest rating
-    Show.where("rating = ?", self.lowest_rating).first
-  end
+  def self.least_popular_show
+    Show.find_by(rating: lowest_rating)
+  end 
 
   def self.ratings_sum #returns the sum of all the ratings
     Show.sum(:rating)
