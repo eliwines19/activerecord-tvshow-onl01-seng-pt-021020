@@ -10,11 +10,11 @@ class Show < ActiveRecord::Base
 
   def self.lowest_rating
     Show.minimum(:rating)
-  end 
+  end
 
   def self.least_popular_show
     Show.find_by(rating: lowest_rating)
-  end 
+  end
 
   def self.ratings_sum #returns the sum of all the ratings
     Show.sum(:rating)
